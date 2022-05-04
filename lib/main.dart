@@ -1,34 +1,58 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show ThemeMode, Brightness;
+import 'package:flutter/widgets.dart';
 import 'package:flutter_days_app/macintosh/nav.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-void main(List<String> args) {
-  WidgetsFlutterBinding.ensureInitialized();
-  // // Add this your main method.
-  // // used to show a webview title bar.
-  // if (runWebViewTitleBarWidget(args)) {
-  //   return;
-  // }
-  runApp(const MyApp());
+Future<void> main() async {
+  // Cache the data from the graphql endpoint.
+  await initHiveForFlutter();
+
+  final HttpLink httpLink = HttpLink(
+    'https://cafe-javas-flutter-app.herokuapp.com/v1/graphql',
+  );
+
+  ValueNotifier<GraphQLClient> client = ValueNotifier(
+    GraphQLClient(
+      link: httpLink,
+      cache: GraphQLCache(
+        store: HiveStore(),
+      ),
+    ),
+  );
+  runApp(MyApp(graphQLClient: client));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({required this.graphQLClient, Key? key}) : super(key: key);
+
+  final ValueNotifier<GraphQLClient> graphQLClient;
 
   @override
   Widget build(BuildContext context) {
-    return MacosApp(
-      title: 'Flutter Days App',
-      theme: MacosThemeData(
-          primaryColor: const Color(0xffa7b39a),
-          brightness: Brightness.light,
-          canvasColor: const Color(0xfffafafa),
+    return GraphQLProvider(
+      client: graphQLClient,
+      child: MacosApp(
+        title: 'Flutter Desktop App',
+        debugShowCheckedModeBanner: false,
+        theme: MacosThemeData(
+            primaryColor: const Color(0xffa7b39a),
+            brightness: Brightness.light,
+            canvasColor: const Color(0xfffafafa),
+            iconTheme: const MacosIconThemeData(
+              color: Color(0xff044064),
+            )),
+        darkTheme: MacosThemeData(
+          brightness: Brightness.dark,
+          primaryColor: const Color(0xff044064),
           iconTheme: const MacosIconThemeData(
-            color: Color(0xff044064),
-          )),
-      darkTheme: MacosThemeData.dark(),
-      themeMode: ThemeMode.light,
-      home: const MacintoshNav(),
+            color: Color(0xffa7b39a),
+          ),
+          typography: MacosTypography.white,
+        ),
+        themeMode: ThemeMode.system,
+        home: const MacintoshNav(),
+      ),
     );
   }
 }

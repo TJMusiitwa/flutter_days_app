@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart' hide OverlayVisibilityMode;
 import 'package:macos_ui/macos_ui.dart';
 
 import 'pages/cart_page.dart';
@@ -23,11 +23,11 @@ class _MacintoshNavState extends State<MacintoshNav> {
     CupertinoTabView(builder: (BuildContext context) => const SettingsPage()),
   ];
 
-  Color textLuminance(Color backgroundColor) {
-    return backgroundColor.computeLuminance() > 0.5
-        ? MacosColors.black
-        : MacosColors.white;
-  }
+  // Color textLuminance(Color backgroundColor) {
+  //   return backgroundColor.computeLuminance() > 0.5
+  //       ? MacosColors.black
+  //       : MacosColors.white;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -63,12 +63,53 @@ class _MacintoshNavState extends State<MacintoshNav> {
                   ),
                 ]);
           },
-          bottom: const Padding(
-            padding: EdgeInsets.all(16.0),
+          bottom: Padding(
+            padding: const EdgeInsets.all(16.0),
             child: MacosListTile(
-              leading: MacosIcon(CupertinoIcons.profile_circled),
-              title: Text('Javas User'),
-              subtitle: Text('user@javas.com'),
+              leading: const MacosIcon(CupertinoIcons.profile_circled),
+              title: const Text('Javas User'),
+              subtitle: const Text('user@javas.com'),
+              onClick: () {
+                showMacosAlertDialog(
+                  context: context,
+                  builder: (_) => MacosAlertDialog(
+                    appIcon: const MacosIcon(
+                      CupertinoIcons.profile_circled,
+                      size: 56,
+                    ),
+                    title: const Text('Sign in to your account'),
+                    message: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        SizedBox(height: 8),
+                        MacosTextField(
+                          placeholder: 'Email',
+                          autofillHints: [AutofillHints.email],
+                          clearButtonMode: OverlayVisibilityMode.editing,
+                        ),
+                        SizedBox(height: 10),
+                        MacosTextField(
+                          placeholder: 'Password',
+                          autofillHints: [AutofillHints.password],
+                          clearButtonMode: OverlayVisibilityMode.editing,
+                        ),
+                      ],
+                    ),
+                    horizontalActions: false,
+                    primaryButton: PushButton(
+                        child: const Text('Sign In'),
+                        buttonSize: ButtonSize.large,
+                        onPressed: () =>
+                            Navigator.of(context, rootNavigator: true).pop()),
+                    secondaryButton: PushButton(
+                        child: const Text('Cancel'),
+                        buttonSize: ButtonSize.large,
+                        onPressed: () =>
+                            Navigator.of(context, rootNavigator: true).pop()),
+                  ),
+                );
+              },
             ),
           ),
           minWidth: 200),

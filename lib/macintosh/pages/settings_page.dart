@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_days_app/macintosh/pages/settings/feedback.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'settings/licenses.dart';
 
@@ -13,6 +15,7 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   int selectedIndex = 1;
+
   @override
   Widget build(BuildContext context) {
     return MacosScaffold(
@@ -57,19 +60,24 @@ class _SettingsPageState extends State<SettingsPage> {
                 leading: const MacosIcon(CupertinoIcons.mail),
                 title: const Text('Email Us'),
                 subtitle: const Text('info@cafejavas.co.ug'),
-                onClick: () => print('Launch email client'),
+                onClick: () async =>
+                    await launchUrl(Uri.parse('mailto:info@cafejavas.co.ug')),
               ),
               const SizedBox(height: 20),
               MacosListTile(
                 leading: const MacosIcon(CupertinoIcons.news),
                 title: const Text('Terms of use'),
-                onClick: () => setState(() => selectedIndex = 1),
+                onClick: () async => await launchUrl(
+                  Uri.parse('https://cafejavas.co.ug/user/terms'),
+                ),
               ),
               const SizedBox(height: 20),
               MacosListTile(
                 leading: const MacosIcon(CupertinoIcons.lock),
                 title: const Text('Privacy Policy'),
-                onClick: () => setState(() => selectedIndex = 2),
+                onClick: () async => await launchUrlString(
+                  'https://cafejavas.co.ug/user/privacy',
+                ),
               ),
               const SizedBox(height: 20),
               MacosListTile(
