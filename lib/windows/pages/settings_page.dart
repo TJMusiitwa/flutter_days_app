@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_days_app/windows/pages/settings/feedback.dart';
 import 'package:flutter_days_app/windows/pages/settings/license.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -50,9 +51,20 @@ class SettingsPage extends StatelessWidget {
           title: Text('Privacy Policy'),
         ),
         const SizedBox(height: 10),
-        const ListTile(
-          leading: Icon(FluentIcons.feedback),
-          title: Text('Share your Feedback'),
+        TappableListTile(
+          leading: const Icon(FluentIcons.feedback),
+          title: const Text('Share your Feedback'),
+          onTap: () => Navigator.of(context).push(PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const FeedbackPage(),
+            transitionDuration: const Duration(milliseconds: 300),
+            transitionsBuilder:
+                (_, Animation<double> animation, __, Widget child) {
+              return DrillInPageTransition(
+                animation: animation,
+                child: child,
+              );
+            },
+          )),
         ),
         const SizedBox(height: 10),
         TappableListTile(

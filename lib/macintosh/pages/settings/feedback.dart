@@ -67,7 +67,7 @@ class FeedbackPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   MacosDatePicker(
-                    onDateChanged: (date) => print(date),
+                    onDateChanged: (date) => debugPrint(date.toString()),
                   ),
                   const SizedBox(height: 20),
                   const Label(

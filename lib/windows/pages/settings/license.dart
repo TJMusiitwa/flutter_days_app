@@ -1,4 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart' hide ListTile;
 import 'package:flutter/foundation.dart';
 
 class LicensePage extends StatelessWidget {
@@ -44,18 +44,15 @@ class LicensePage extends StatelessWidget {
                   itemCount: licenses?.length ?? 0,
                   itemBuilder: (BuildContext context, int index) {
                     final license = licenses[index];
-                    return ListTile(
-                      //contentPadding: const EdgeInsets.only(bottom: 30),
-                      title: Text(
-                        license.title ?? '',
-                      ),
-                      // subtitle: Text(
-                      //   license.text ?? '',
-                      //   softWrap: true,
-                      //   style: const TextStyle(fontSize: 18),
-                      // ),
-                      //onClick: () => print('Launch license viewer'),
-                    );
+                    return Expander(
+                        header: Text(
+                          license.title ?? '',
+                          style: FluentTheme.of(context).typography.bodyStrong,
+                        ),
+                        content: Text(
+                          license.text ?? '',
+                          style: FluentTheme.of(context).typography.body,
+                        ));
                   },
                   separatorBuilder: (BuildContext context, int index) =>
                       const SizedBox(height: 30),

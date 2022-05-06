@@ -29,8 +29,9 @@ class MyApp extends StatelessWidget {
     return GraphQLProvider(
       client: graphQLClient,
       child: FluentApp(
-        title: 'Flutter Days App',
-        themeMode: ThemeMode.light,
+        title: 'Flutter CJs App',
+        themeMode: ThemeMode.system,
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
             // accentColor: AccentColor('4289180570', const {
             //   '50': Color(0xfff2f4f0),
@@ -44,8 +45,8 @@ class MyApp extends StatelessWidget {
             //   '800': Color(0xff333a2c),
             //   '900': Color(0xff1a1d16)
             // }),
-            accentColor: Colors.grey.toAccentColor(),
-            brightness: Brightness.light,
+            accentColor: const Color(0xff044064).toAccentColor(),
+            //brightness: Brightness.light,
             visualDensity: VisualDensity.adaptivePlatformDensity,
             //typography: Typography.material2018(),
             scaffoldBackgroundColor: const Color(0xfffafafa),
