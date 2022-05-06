@@ -68,17 +68,7 @@ class BreakfastMenu extends StatelessWidget {
                   Navigator.of(context).push(PageRouteBuilder(
                     pageBuilder: (_, __, ___) => MenuDetails(
                       menuID: breakfast['id'],
-                      detailQuery: """
-              query getBreakByID(\$menuID: Int!) {
-              Breakfast_by_pk(id: \$menuID) {
-    id
-    name
-    description
-    image
-    price
-  }
-}
-  """,
+                      detailQuery: getBreakFastByID,
                       resultKey: 'Breakfast_by_pk',
                     ),
                     transitionDuration: const Duration(milliseconds: 300),

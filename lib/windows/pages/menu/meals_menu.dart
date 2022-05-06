@@ -69,17 +69,7 @@ class MealsMenu extends StatelessWidget {
                   Navigator.of(context).push(PageRouteBuilder(
                     pageBuilder: (_, __, ___) => MenuDetails(
                       menuID: meal['id'],
-                      detailQuery: """
-              query getMealByID(\$menuID: Int!) {
-  Meals_by_pk(id: \$menuID) {
-    id
-    image
-    name
-    price
-    description
-  }
-}
-  """,
+                      detailQuery: getMealsByID,
                       resultKey: 'Meals_by_pk',
                     ),
                     transitionDuration: const Duration(milliseconds: 300),

@@ -75,6 +75,7 @@ class LocationsPage extends StatelessWidget {
                       cardTitle: location['location_name'],
                       cardSubtitle: location['location_contact1'],
                       //contact2: '',
+                      onPressed: () {},
                     );
                   },
                 );

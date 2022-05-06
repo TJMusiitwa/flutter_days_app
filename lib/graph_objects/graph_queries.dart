@@ -68,3 +68,49 @@ const String getDessertsMenu = """
   }
 }
   """;
+
+const String getBreakFastByID = """
+query getBreakByID(\$menuID: Int!) {
+  Breakfast_by_pk(id: \$menuID) {
+    id
+    name
+    description
+    image
+    price
+  }
+}
+""";
+
+const String getMealsByID = """
+query getMealByID(\$menuID: Int!) {
+  Meals_by_pk(id: \$menuID) {
+    id
+    image
+    name
+    price
+    description
+  }
+}
+""";
+
+const String getDessertByID = """
+  query getDessertByID(\$menuID: Int!) {
+  Desserts_by_pk(id: \$menuID) {
+    id
+    image
+    name
+    price
+    description
+  }
+}""";
+
+const String getDrinksById = """
+  query getDrinksByID (\$menuID: Int!) {
+  Drinks_by_pk(id: \$menuID) {
+    id
+    image
+    name
+    price
+    description
+  }
+}""";

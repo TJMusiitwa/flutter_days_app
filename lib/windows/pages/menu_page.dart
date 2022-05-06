@@ -11,10 +11,12 @@ class MenuPage extends StatefulWidget {
   State<MenuPage> createState() => _MenuPageState();
 }
 
-class _MenuPageState extends State<MenuPage> {
+class _MenuPageState extends State<MenuPage>
+    with AutomaticKeepAliveClientMixin<MenuPage> {
   int currentTab = 0;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ScaffoldPage(
       header: const PageHeader(
         title: Text('Menu'),
@@ -52,4 +54,7 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

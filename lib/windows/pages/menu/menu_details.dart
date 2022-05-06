@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image_builder/cached_network_image_builder.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -107,8 +109,21 @@ class MenuDetails extends StatelessWidget {
                               style:
                                   FluentTheme.of(context).typography.subtitle),
                           const SizedBox(height: 20),
-                          Text(detail['description'],
-                              style: FluentTheme.of(context).typography.body),
+                          Row(
+                            children: [
+                              RatingBar(
+                                  rating: double.parse(
+                                      Random().nextInt(5).toString())),
+                              const SizedBox(width: 10),
+                              Text('(${Random().nextInt(1000).toString()})'),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            width: 400,
+                            child: Text(detail['description'],
+                                style: FluentTheme.of(context).typography.body),
+                          ),
                           const SizedBox(height: 20),
                           Text('UGX${detail['price']}',
                               style:

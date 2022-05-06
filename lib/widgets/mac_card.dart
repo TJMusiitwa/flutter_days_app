@@ -94,6 +94,7 @@ class MacCard extends StatelessWidget {
     this.cardSubtitle,
     this.cardSubtitle2,
     this.enableCornerIcon = false,
+    this.onPressed,
     Key? key,
   }) : super(key: key);
   final String cardImage;
@@ -103,10 +104,12 @@ class MacCard extends StatelessWidget {
 
   final bool? enableCornerIcon;
 
+  final VoidCallback? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return PressableCard(
-      onPressed: () {},
+      onPressed: onPressed!,
       child: Stack(
         children: [
           SizedBox(
