@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_days_app/graph_objects/graph_queries.dart';
-import 'package:flutter_days_app/widgets/mac_location_card.dart';
+import 'package:flutter_days_app/widgets/mac_card.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:macos_ui/macos_ui.dart';
 
@@ -22,13 +22,39 @@ class LocationsPage extends StatelessWidget {
                 }
 
                 if (result.data == null) {
-                  return const Center(
-                    child: Text('No Locations Found'),
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Icon(CupertinoIcons.location_fill, size: 64),
+                      SizedBox(height: 10),
+                      Text('No Locations Found'),
+                    ],
                   );
                 }
 
                 if (result.exception != null) {
-                  print(result.exception.toString());
+                  showMacosAlertDialog(
+                      context: context,
+                      builder: (_) {
+                        return MacosAlertDialog(
+                          appIcon: const Icon(
+                              CupertinoIcons.exclamationmark_triangle,
+                              size: 56,
+                              color: MacosColors.systemRedColor),
+                          title: const Text('Error'),
+                          message: Text(
+                              'Error returned the following exception: ${result.exception}'),
+                          primaryButton: PushButton(
+                              child: const Text('OK'),
+                              buttonSize: ButtonSize.large,
+                              onPressed: () {
+                                refetch!();
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
+                              }),
+                        );
+                      });
                 }
 
                 List? locations = result.data!['Cafe_Locations'];
@@ -44,10 +70,10 @@ class LocationsPage extends StatelessWidget {
                   itemCount: locations == null ? 0 : locations.length,
                   itemBuilder: (BuildContext context, int index) {
                     final location = locations![index];
-                    return MacLocationCard(
-                      img: location['location_image'],
-                      location: location['location_name'],
-                      contact: location['location_contact1'],
+                    return MacCard(
+                      cardImage: location['location_image'],
+                      cardTitle: location['location_name'],
+                      cardSubtitle: location['location_contact1'],
                       //contact2: '',
                     );
                   },

@@ -50,12 +50,10 @@ class MacosLicensePage extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             final license = licenses[index];
                             return MacosListTile(
-                              //leading: const MacosIcon(CupertinoIcons.book),
-                              title: Text(
-                                license.title ?? '',
-                                style: const TextStyle(
-                                    fontSize: 24, fontWeight: FontWeight.bold),
-                              ),
+                              title: Text(license.title ?? '',
+                                  style:
+                                      MacosTheme.of(context).typography.title3),
+
                               // subtitle: Text(
                               //   license.text ?? '',
                               //   softWrap: true,

@@ -87,16 +87,21 @@ class _PressableCardState extends State<PressableCard> {
   }
 }
 
-class MacLocationCard extends StatelessWidget {
-  const MacLocationCard({
-    required this.img,
-    required this.location,
-    required this.contact,
+class MacCard extends StatelessWidget {
+  const MacCard({
+    required this.cardImage,
+    required this.cardTitle,
+    this.cardSubtitle,
+    this.cardSubtitle2,
+    this.enableCornerIcon = false,
     Key? key,
   }) : super(key: key);
-  final String img;
-  final String location;
-  final String? contact;
+  final String cardImage;
+  final String cardTitle;
+  final String? cardSubtitle;
+  final String? cardSubtitle2;
+
+  final bool? enableCornerIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +113,7 @@ class MacLocationCard extends StatelessWidget {
             height: 300,
             width: double.infinity,
             child: CachedNetworkImageBuilder(
-              url: img,
+              url: cardImage,
               builder: (image) => FittedBox(
                 fit: BoxFit.cover,
                 child: Image.file(image),
@@ -129,7 +134,7 @@ class MacLocationCard extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      location,
+                      cardTitle,
                       style:
                           MacosTheme.of(context).typography.headline.copyWith(
                                 fontWeight: FontWeight.w800,
@@ -137,7 +142,7 @@ class MacLocationCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 7.0),
                     Text(
-                      contact!,
+                      cardSubtitle!,
                       style: MacosTheme.of(context).typography.body.copyWith(
                             fontWeight: FontWeight.w400,
                           ),

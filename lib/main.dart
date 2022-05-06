@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     return GraphQLProvider(
       client: graphQLClient,
       child: MacosApp(
-        title: 'Flutter Desktop App',
+        title: 'Flutter CJs App',
         debugShowCheckedModeBanner: false,
         theme: MacosThemeData(
             primaryColor: const Color(0xffa7b39a),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart' hide OverlayVisibilityMode;
+import 'package:flutter_days_app/macintosh/pages/favourites_page.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 import 'pages/cart_page.dart';
@@ -19,15 +20,10 @@ class _MacintoshNavState extends State<MacintoshNav> {
   final List<Widget> pages = <Widget>[
     CupertinoTabView(builder: (BuildContext context) => const MenuPage()),
     const LocationsPage(),
+    const FavouritesPage(),
     const CartPage(),
     CupertinoTabView(builder: (BuildContext context) => const SettingsPage()),
   ];
-
-  // Color textLuminance(Color backgroundColor) {
-  //   return backgroundColor.computeLuminance() > 0.5
-  //       ? MacosColors.black
-  //       : MacosColors.white;
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +48,10 @@ class _MacintoshNavState extends State<MacintoshNav> {
                   SidebarItem(
                     leading: MacosIcon(CupertinoIcons.location_fill),
                     label: Text('Locations'),
+                  ),
+                  SidebarItem(
+                    leading: MacosIcon(CupertinoIcons.heart),
+                    label: Text('Favourites'),
                   ),
                   SidebarItem(
                     leading: MacosIcon(CupertinoIcons.cart),

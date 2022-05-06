@@ -139,14 +139,10 @@ class CartListTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(cartMain,
                         style: MacosTheme.of(context).typography.headline),
-                    const SizedBox(width: 10),
-                    Text(cartPrice,
-                        textAlign: TextAlign.justify,
-                        style: MacosTheme.of(context).typography.headline),
+                    const Spacer(),
                     Row(
                       children: [
                         MacosIconButton(
@@ -164,6 +160,9 @@ class CartListTile extends StatelessWidget {
                   cartExtras,
                   style: MacosTheme.of(context).typography.caption1,
                 ),
+                Text(cartPrice,
+                    textAlign: TextAlign.justify,
+                    style: MacosTheme.of(context).typography.headline),
               ],
             ),
           ),

@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
             //   '900': Color(0xff1a1d16)
             // }),
             accentColor: const Color(0xff044064).toAccentColor(),
-            //brightness: Brightness.light,
+            fontFamily: 'Segoe',
             visualDensity: VisualDensity.adaptivePlatformDensity,
             //typography: Typography.material2018(),
             scaffoldBackgroundColor: const Color(0xfffafafa),

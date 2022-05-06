@@ -63,10 +63,26 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Segoe
+      fonts:
+        - asset: assets/fonts/segoe/SegoeUI-VF.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Text.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Text-Semilight.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Text-Semibold.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Text-Light.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Text-Bold.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Small.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Small-Semilight.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Small-Semibold.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Small-Light.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Small-Bold.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Display.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Display-Semilight.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Display-Semibold.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Display-Light.ttf
+        - asset: assets/fonts/segoe/Segoe-UI-Variable-Static-Display-Bold.ttf
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
