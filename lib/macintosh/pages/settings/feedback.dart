@@ -83,9 +83,9 @@ class FeedbackPage extends StatelessWidget {
                   SizedBox(
                     width: 250,
                     child: PushButton(
-                        child: const Text('Send'),
                         buttonSize: ButtonSize.large,
-                        onPressed: () {}),
+                        onPressed: () {},
+                        child: const Text('Send')),
                   ),
                 ],
               ),

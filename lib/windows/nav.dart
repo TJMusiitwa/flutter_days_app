@@ -13,6 +13,15 @@ class WindowsNav extends StatefulWidget {
 }
 
 class _WindowsNavState extends State<WindowsNav> {
+  final List<Widget> _pages = const [
+    MenuPage(),
+    LocationsPage(),
+    FavouritePage(),
+    CartPage(),
+    SettingsPage(),
+    AbsorbPointer(),
+    AbsorbPointer()
+  ];
   int pageIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -38,24 +47,27 @@ class _WindowsNavState extends State<WindowsNav> {
           PaneItem(
             icon: const Icon(FluentIcons.context_menu),
             title: const Text('Menu'),
+            body: _pages[0],
           ),
           PaneItem(
             icon: const Icon(FluentIcons.map_pin),
             title: const Text('Locations'),
+            body: _pages[1],
           ),
           PaneItem(
             icon: const Icon(FluentIcons.favorite_star),
             title: const Text('Favorites'),
+            body: _pages[2],
           ),
           PaneItem(
               icon: const Icon(FluentIcons.shopping_cart),
               title: const Text('Cart'),
-              infoBadge: const InfoBadge(
-                source: Text('4'),
-              )),
+              infoBadge: const InfoBadge(source: Text('4')),
+              body: _pages[3]),
           PaneItem(
             icon: const Icon(FluentIcons.settings),
             title: const Text('Settings'),
+            body: _pages[4],
           ),
         ],
         footerItems: [
@@ -63,28 +75,22 @@ class _WindowsNavState extends State<WindowsNav> {
           PaneItem(
             icon: const Icon(FluentIcons.help),
             title: const Text('Help'),
+            body: _pages[5],
           ),
           PaneItem(
             icon: const Icon(FluentIcons.user_window),
             title: const Text('Javas User'),
+            body: _pages[6],
           ),
         ],
       ),
-      content: NavigationBody(
-        index: pageIndex,
-        children: const [
-          MenuPage(),
-          LocationsPage(),
-          FavouritePage(),
-          CartPage(),
-          SettingsPage(),
-          AbsorbPointer(),
-          AbsorbPointer()
-        ],
-        transitionBuilder: (child, animation) {
-          return EntrancePageTransition(child: child, animation: animation);
-        },
-      ),
+      // content: NavigationBody(
+      //   index: pageIndex,
+      //   children: ,
+      //   transitionBuilder: (child, animation) {
+      //     return EntrancePageTransition(child: child, animation: animation);
+      //   },
+      // ),
     );
   }
 }

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter CJs App',
         themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
+        theme: FluentThemeData(
             // accentColor: AccentColor('4289180570', const {
             //   '50': Color(0xfff2f4f0),
             //   '100': Color(0xffe6e9e2),

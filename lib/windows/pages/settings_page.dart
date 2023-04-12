@@ -12,12 +12,12 @@ class SettingsPage extends StatelessWidget {
         title: Text('Settings'),
       ),
       content: ListView(children: [
-        TappableListTile(
+        ListTile(
           leading: const Icon(FluentIcons.phone),
           title: const Text('Call Us'),
           subtitle: const Text('+25630000909'),
           trailing: const Icon(FluentIcons.chevron_right),
-          onTap: () {
+          onPressed: () {
             showDialog(
                 context: context,
                 builder: (_) => ContentDialog(
@@ -51,10 +51,10 @@ class SettingsPage extends StatelessWidget {
           title: Text('Privacy Policy'),
         ),
         const SizedBox(height: 10),
-        TappableListTile(
+        ListTile(
           leading: const Icon(FluentIcons.feedback),
           title: const Text('Share your Feedback'),
-          onTap: () => Navigator.of(context).push(PageRouteBuilder(
+          onPressed: () => Navigator.of(context).push(PageRouteBuilder(
             pageBuilder: (_, __, ___) => const FeedbackPage(),
             transitionDuration: const Duration(milliseconds: 300),
             transitionsBuilder:
@@ -67,10 +67,10 @@ class SettingsPage extends StatelessWidget {
           )),
         ),
         const SizedBox(height: 10),
-        TappableListTile(
+       ListTile(
           leading: const Icon(FluentIcons.info),
           title: const Text('Licenses'),
-          onTap: () => Navigator.of(context).push(PageRouteBuilder(
+          onPressed: () => Navigator.of(context).push(PageRouteBuilder(
             pageBuilder: (_, __, ___) => const LicensePage(),
             transitionDuration: const Duration(milliseconds: 300),
             transitionsBuilder:

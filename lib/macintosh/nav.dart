@@ -28,10 +28,6 @@ class _MacintoshNavState extends State<MacintoshNav> {
   @override
   Widget build(BuildContext context) {
     return MacosWindow(
-      child: IndexedStack(
-        index: pageIndex,
-        children: pages,
-      ),
       sidebar: Sidebar(
           builder: (_, controller) {
             return SidebarItems(
@@ -98,21 +94,25 @@ class _MacintoshNavState extends State<MacintoshNav> {
                     ),
                     horizontalActions: false,
                     primaryButton: PushButton(
-                        child: const Text('Sign In'),
                         buttonSize: ButtonSize.large,
                         onPressed: () =>
-                            Navigator.of(context, rootNavigator: true).pop()),
+                            Navigator.of(context, rootNavigator: true).pop(),
+                        child: const Text('Sign In')),
                     secondaryButton: PushButton(
-                        child: const Text('Cancel'),
                         buttonSize: ButtonSize.large,
                         onPressed: () =>
-                            Navigator.of(context, rootNavigator: true).pop()),
+                            Navigator.of(context, rootNavigator: true).pop(),
+                        child: const Text('Cancel')),
                   ),
                 );
               },
             ),
           ),
           minWidth: 200),
+      child: IndexedStack(
+        index: pageIndex,
+        children: pages,
+      ),
     );
   }
 }

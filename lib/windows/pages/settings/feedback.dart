@@ -24,18 +24,18 @@ class FeedbackPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const TextBox(
-              header: 'First Name',
+              //header: 'First Name',
               placeholder: 'Enter your first name',
               autofillHints: [AutofillHints.givenName],
             ),
             const SizedBox(height: 20),
             const TextBox(
-              header: 'Last Name',
+              //header: 'Last Name',
               placeholder: 'Enter your last name',
               autofillHints: [AutofillHints.familyName],
             ),
             const SizedBox(height: 20),
-            const InfoLabel(
+            InfoLabel(
               label: 'Restaurant Location',
               child: AutoSuggestBox(
                 items: <String>[
@@ -46,7 +46,7 @@ class FeedbackPage extends StatelessWidget {
                   'Oasis Mall',
                   'Victoria Mall',
                   'Cargen House'
-                ],
+                ].map((e) => AutoSuggestBoxItem(value: e, label: e)).toList(),
                 placeholder: 'Restaurant Location',
               ),
             ),
@@ -62,7 +62,7 @@ class FeedbackPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const TextBox(
-              header: 'Feedback',
+              //header: 'Feedback',
               placeholder: 'Enter your feedback',
               keyboardType: TextInputType.multiline,
               maxLines: 4,

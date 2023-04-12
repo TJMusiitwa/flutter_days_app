@@ -24,8 +24,8 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       children: [
         ResizablePane(
-          minWidth: 180,
-          startWidth: 220,
+          minSize: 180,
+          startSize: 220,
           windowBreakpoint: 700,
           resizableSide: ResizableSide.right,
           builder: (_, __) => ListView(

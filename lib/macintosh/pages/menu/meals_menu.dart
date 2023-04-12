@@ -47,12 +47,12 @@ class MealsMenu extends StatelessWidget {
                     message: Text(
                         'Error returned the following exception: ${result.exception}'),
                     primaryButton: PushButton(
-                        child: const Text('OK'),
                         buttonSize: ButtonSize.large,
                         onPressed: () {
                           refetch!();
                           Navigator.of(context, rootNavigator: true).pop();
-                        }),
+                        },
+                        child: const Text('OK')),
                   );
                 });
           }

@@ -74,6 +74,12 @@ class CartPage extends StatelessWidget {
                   child: SizedBox(
                     width: 300,
                     child: PushButton(
+                        color:
+                            MacosTheme.of(context).brightness == Brightness.dark
+                                ? MacosColors.white
+                                : MacosColors.black,
+                        buttonSize: ButtonSize.large,
+                        onPressed: () {},
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -86,13 +92,7 @@ class CartPage extends StatelessWidget {
                                     : MacosColors.white,
                               ),
                               const Text('Pay'),
-                            ]),
-                        color:
-                            MacosTheme.of(context).brightness == Brightness.dark
-                                ? MacosColors.white
-                                : MacosColors.black,
-                        buttonSize: ButtonSize.large,
-                        onPressed: () {}),
+                            ])),
                   ),
                 )
               ],

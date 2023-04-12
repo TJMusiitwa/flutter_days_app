@@ -14,6 +14,13 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage>
     with AutomaticKeepAliveClientMixin<MenuPage> {
   int currentTab = 0;
+
+  final List<Widget> _pages = const [
+    BreakfastMenu(),
+    MealsMenu(),
+    DrinksMenu(),
+    DessertMenu(),
+  ];
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -26,31 +33,30 @@ class _MenuPageState extends State<MenuPage>
         child: TabView(
             currentIndex: currentTab,
             onChanged: (index) => setState(() => currentTab = index),
-            tabs: const [
+            tabs:  [
               Tab(
-                  text: Text('Breakfast Menu'),
-                  icon: Icon(FluentIcons.breakfast),
+                  text: const Text('Breakfast Menu'),
+                  icon: const Icon(FluentIcons.breakfast),
+                  body: _pages[0],
                   closeIcon: null),
               Tab(
-                  text: Text('Main Meals'),
-                  icon: Icon(FluentIcons.brunch),
+                  text: const Text('Main Meals'),
+                  icon: const Icon(FluentIcons.brunch),
+                  body: _pages[1],
                   closeIcon: null),
               Tab(
-                  text: Text('Drinks Menu'),
-                  icon: Icon(FluentIcons.beer_mug),
+                  text: const Text('Drinks Menu'),
+                  icon: const Icon(FluentIcons.beer_mug),
+                  body: _pages[2],
                   closeIcon: null),
               Tab(
-                text: Text('Dessert Menu'),
-                icon: Icon(FluentIcons.cake),
+                text: const Text('Dessert Menu'),
+                icon: const Icon(FluentIcons.cake),
+                body: _pages[3],
                 closeIcon: null,
               ),
             ],
-            bodies: const [
-              BreakfastMenu(),
-              MealsMenu(),
-              DrinksMenu(),
-              DessertMenu()
-            ]),
+           ),
       ),
     );
   }
